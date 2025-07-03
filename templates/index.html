@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Financial Statement Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">📊 AI-Powered Financial Statement Generator</h2>
+
+    <!-- Upload Form -->
+    <form method="POST" enctype="multipart/form-data" class="mb-5">
+        <div class="mb-3">
+            <label for="file" class="form-label">Upload Financial CSV File</label>
+            <input type="file" name="file" class="form-control" id="file" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate Report</button>
+    </form>
+
+    {% if result %}
+        <hr>
+
+        <!-- Income Statement -->
+        <h4>🧾 Income Statement</h4>
+        <div class="table-responsive">
+            {{ result.income | safe }}
+        </div>
+
+        <!-- Balance Sheet -->
+        <h4 class="mt-4">📊 Balance Sheet</h4>
+        <div class="table-responsive">
+            {{ result.balance | safe }}
+        </div>
+
+        <!-- KPIs -->
+        <h4 class="mt-4">📌 Key Financial Indicators</h4>
+        <div class="table-responsive">
+            {{ result.kpis | safe }}
+        </div>
+
+        <!-- Monthly Income Overview -->
+        <h4 class="mt-4">📆 Monthly Income Overview</h4>
+        <div class="table-responsive">
+            {{ result.monthly | safe }}
+        </div>
+
+        <!-- AI Summary -->
+        <h4 class="mt-4">🧠 AI Summary & Insights</h4>
+        <p>{{ result.summary }}</p>
+
+        <!-- AI Red Flags -->
+        <h4 class="mt-4 text-danger">⚠️ AI-Detected Risks</h4>
+        <p>{{ result.risks }}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
