@@ -22,7 +22,10 @@ This tool takes raw financial data in CSV/Excel format and generates professiona
 
 ## 📸 Screenshots
 
-
+### Dashboard
+![Dashboard](screenshots/income_statement&balance_sheet.png)
+### Generated Report
+![AI summary Preview](screenshots/1.png)
 
 ## 💼 Use Case
 
